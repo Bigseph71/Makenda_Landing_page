@@ -453,6 +453,13 @@
                         <div class="form-group full-width">
                             <textarea id="message" name="message" placeholder="Ihre Nachricht" required></textarea>
                         </div>
+                        <div class="form-group full-width consent-group">
+                            <label class="consent-label">
+                                <input type="checkbox" name="consent" id="consent" required>
+                                <span>Ich bin damit einverstanden, dass meine Daten gemäß der <a href="#" onclick="document.getElementById('datenschutz-modal').classList.add('active'); return false;">Datenschutzrichtlinie</a> verwendet werden, um kontaktiert zu werden.</span>
+                            </label>
+                            <p class="consent-note">Ich willige ein, dass meine Daten gemäß der Datenschutzerklärung verwendet werden, um kontaktiert zu werden.</p>
+                        </div>
                         <div class="form-group full-width">
                             <button type="submit" class="btn btn-primary">Nachricht senden</button>
                         </div>
@@ -776,6 +783,42 @@
     }
     .contact-info a:hover {
         text-decoration: underline;
+    }
+    /* ===== Consentement DSGVO ===== */
+    .consent-group {
+        margin-top: 8px;
+    }
+    .consent-label {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        color: #444;
+        line-height: 1.5;
+    }
+    .consent-label input[type="checkbox"] {
+        margin-top: 3px;
+        flex-shrink: 0;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        accent-color: #3D516F;
+    }
+    .consent-label a {
+        color: #3D516F;
+        text-decoration: underline;
+        font-weight: 500;
+    }
+    .consent-label a:hover {
+        color: #C0392B;
+    }
+    .consent-note {
+        margin-top: 6px;
+        margin-left: 26px;
+        font-size: 0.8rem;
+        color: #888;
+        font-style: italic;
     }
     /* ===== Microsoft Certifications ===== */
     .certifications-block {
