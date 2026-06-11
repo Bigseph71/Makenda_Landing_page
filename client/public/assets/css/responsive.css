@@ -1,0 +1,327 @@
+/* 
+* Makenda Landing Page Responsive Styles (Mobile-First)
+* Breakpoints based on user requirements:
+* - Smartphones petits (0 - 375px): Base styles in style.css
+* - Smartphones standards (376px - 428px)
+* - Smartphones larges (429px - 576px)
+* - Tablettes en portrait (577px - 768px)
+* - Tablettes en paysage (769px - 992px)
+* - Ordinateurs portables (993px - 1366px)
+* - Écrans de bureau (1367px - 1920px)
+* - Grands écrans et 4K (1921px+)
+*/
+
+/* Smartphones standards (376px - 428px) */
+@media screen and (min-width: 376px) {
+    :root {
+        font-size: 13.5px; /* Slightly larger base font */
+    }
+    .container {
+        padding: 0 20px;
+    }
+    .hero h1 {
+        font-size: 1.9rem;
+    }
+    .section-header h2 {
+        font-size: 1.9rem;
+    }
+}
+
+/* Smartphones larges (429px - 576px) */
+@media screen and (min-width: 429px) {
+    :root {
+        font-size: 14px;
+    }
+    .hero h1 {
+        font-size: 2.1rem;
+    }
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    .case-study h3 {
+        font-size: 1.6rem;
+    }
+    .cta h2 {
+        font-size: 1.9rem;
+    }
+}
+
+/* Tablettes en portrait (577px - 768px) */
+@media screen and (min-width: 577px) {
+    :root {
+        font-size: 14.5px;
+    }
+    .container {
+        padding: 0 25px;
+    }
+    .hero h1 {
+        font-size: 2.4rem;
+    }
+    .hero p {
+        font-size: 1.1rem;
+    }
+    .section-header h2 {
+        font-size: 2.2rem;
+    }
+    .section-header p {
+        font-size: 1.1rem;
+    }
+    .about-text h3 {
+        font-size: 1.5rem;
+    }
+    .case-study h3 {
+        font-size: 1.7rem;
+    }
+    .teaser {
+        font-size: 1.2rem;
+    }
+    .case-section h4 {
+        font-size: 1.3rem;
+    }
+    .cta h2 {
+        font-size: 2.1rem;
+    }
+    .cta p {
+        font-size: 1.1rem;
+    }
+    .testimonial {
+        width: 70%;
+    }
+    .form-group {
+        width: 48%;
+        display: inline-block;
+        margin-right: 2%;
+    }
+    .form-group:nth-child(2n) {
+        margin-right: 0;
+    }
+    .form-group.full-width {
+        width: 100%;
+        margin-right: 0;
+    }
+    .contact-info {
+        text-align: left;
+    }
+    .info-item {
+        justify-content: flex-start;
+    }
+    .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        text-align: left;
+    }
+    .footer-logo {
+        margin-bottom: 0;
+    }
+    .footer-links {
+        flex-direction: row;
+        gap: 40px;
+    }
+    .social-icons {
+        justify-content: flex-start;
+    }
+}
+
+/* Tablettes en paysage (769px - 992px) */
+@media screen and (min-width: 769px) {
+    :root {
+        font-size: 15px;
+    }
+    .container {
+        padding: 0 30px;
+    }
+    header .container {
+        height: 70px;
+        padding: 10px 30px;
+    }
+    .logo img {
+        height: 45px;
+    }
+    .mobile-menu-btn {
+        display: none;
+    }
+    nav ul {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        background-color: transparent;
+        box-shadow: none;
+        padding: 0;
+        width: auto;
+        max-height: none; /* Reset max-height for desktop */
+        overflow: visible; /* Reset overflow for desktop */
+    }
+    nav ul li {
+        margin: 0 0 0 30px;
+        text-align: left;
+    }
+    nav ul li a {
+        padding: 0;
+        display: inline;
+    }
+    .hero {
+        padding: 120px 0 80px;
+        margin-top: 70px;
+    }
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    .hero p {
+        font-size: 1.2rem;
+    }
+    .section-header h2 {
+        font-size: 2.4rem;
+    }
+    .about-content {
+        flex-direction: row;
+        text-align: left;
+        gap: 40px;
+    }
+    .about-text {
+        margin-bottom: 0;
+    }
+    .case-study-content {
+        flex-direction: row;
+        gap: 40px;
+    }
+    .case-study-content.reverse {
+        flex-direction: row-reverse;
+    }
+    .case-study-text {
+        flex: 3;
+    }
+    .case-study-image {
+        flex: 2;
+        margin-top: 0;
+    }
+    .case-study h3 {
+        font-size: 1.8rem;
+    }
+    .cta h2 {
+        font-size: 2.3rem;
+    }
+    .testimonials-slider {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .testimonial {
+        width: calc(50% - 20px); /* Two columns */
+        max-width: none;
+        margin-bottom: 30px;
+    }
+    .contact-container {
+        flex-direction: row;
+        gap: 40px;
+    }
+    .contact-info {
+        flex: 1;
+        margin-bottom: 0;
+    }
+    .contact-form {
+        flex: 2;
+    }
+    .footer-links {
+        gap: 50px;
+    }
+}
+
+/* Ordinateurs portables (993px - 1366px) */
+@media screen and (min-width: 993px) {
+    :root {
+        font-size: 15.5px;
+    }
+    .container {
+        max-width: 960px;
+    }
+    .hero h1 {
+        font-size: 3rem;
+    }
+    .section-header h2 {
+        font-size: 2.6rem;
+    }
+    .case-study h3 {
+        font-size: 1.9rem;
+    }
+    .cta h2 {
+        font-size: 2.5rem;
+    }
+    .testimonial {
+        width: calc(33.333% - 20px); /* Three columns */
+    }
+}
+
+/* Écrans de bureau (1367px - 1920px) */
+@media screen and (min-width: 1367px) {
+    :root {
+        font-size: 16px; /* Standard base font size */
+    }
+    .container {
+        max-width: 1140px;
+    }
+    header .container {
+        height: 80px;
+        padding: 15px 30px;
+    }
+    .logo img {
+        height: 50px;
+    }
+    .hero {
+        padding: 150px 0 100px;
+        margin-top: 80px;
+    }
+    .hero h1 {
+        font-size: 3.2rem;
+    }
+    .hero p {
+        font-size: 1.3rem;
+    }
+    .section-header h2 {
+        font-size: 2.8rem;
+    }
+    .section-header p {
+        font-size: 1.2rem;
+    }
+    .about-content {
+        gap: 50px;
+    }
+    .case-study-content {
+        gap: 50px;
+    }
+    .case-study h3 {
+        font-size: 2rem;
+    }
+    .cta h2 {
+        font-size: 2.7rem;
+    }
+    .cta p {
+        font-size: 1.2rem;
+    }
+    .footer-links {
+        gap: 60px;
+    }
+}
+
+/* Grands écrans et 4K (1921px+) */
+@media screen and (min-width: 1921px) {
+    :root {
+        font-size: 17px; /* Larger base font for very large screens */
+    }
+    .container {
+        max-width: 1320px;
+    }
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+    .section-header h2 {
+        font-size: 3rem;
+    }
+    .case-study h3 {
+        font-size: 2.2rem;
+    }
+    .cta h2 {
+        font-size: 3rem;
+    }
+}
+
