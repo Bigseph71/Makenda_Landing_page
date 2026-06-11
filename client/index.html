@@ -434,14 +434,7 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form id="contactForm" action="https://formsubmit.co/kontakt@makenda.digital" method="POST">
-                        <!-- FormSubmit configuration -->
-                        <input type="hidden" name="_subject" value="Neue Kontaktanfrage über makenda.digital">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_next" value="https://makenda.digital/#contact">
-                        <!-- Honeypot anti-spam -->
-                        <input type="text" name="_honey" style="display:none">
+                    <form id="contactForm" action="contact_handler.php" method="POST">
                         <div class="form-group">
                             <input type="text" id="firstName" name="firstName" placeholder="Vorname" required>
                         </div>
