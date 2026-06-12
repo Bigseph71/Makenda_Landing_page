@@ -42,12 +42,11 @@
         "name": "Joseph Hugues Nje Njock",
         "jobTitle": "Dipl.-Ing."
       },
-      "areaServed": ["Aachen", "Heidelberg", "Deutschland"],
+      "areaServed": "Deutschland",
       "knowsAbout": ["Microsoft Power Platform", "Power BI", "Power Automate", "Power Apps", "Dynamics 365", "Prozessautomatisierung", "Low-Code-Entwicklung"]
     }
     </script>
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- Add responsive CSS link -->
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -93,7 +92,7 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-                        <div class="section-header">
+            <div class="section-header">
                 <h2>Über Makenda &ndash; Ihr zertifizierter Microsoft Power Platform Partner</h2>
                 <p>Prozessautomatisierung &amp; Digitalisierung für den deutschsprachigen Raum</p>
             </div>
@@ -115,45 +114,46 @@
                 </div>
             </div>
 
-        <!-- Microsoft Certifications -->
-        <div class="certifications-block">
-            <h3 class="certifications-title">Microsoft Zertifizierungen</h3>
-            <div class="certifications-grid">
+            <!-- Microsoft Certifications -->
+            <div class="certifications-block">
+                <h3 class="certifications-title">Microsoft Zertifizierungen</h3>
+                <div class="certifications-grid">
 
-                <div class="cert-card">
-                    <img src="assets/images/certs/cert-pp-developer.png" alt="Microsoft Certified: Power Platform Developer Associate" loading="lazy">
-                    <span>Power Platform Developer Associate</span>
+                    <div class="cert-card">
+                        <img src="assets/images/certs/cert-pp-developer.png" alt="Microsoft Certified: Power Platform Developer Associate" loading="lazy">
+                        <span>Power Platform Developer Associate</span>
+                    </div>
+
+                    <div class="cert-card">
+                        <img src="assets/images/certs/cert-powerbi-analyst.png" alt="Microsoft Certified: Power BI Data Analyst Associate" loading="lazy">
+                        <span>Power BI Data Analyst Associate</span>
+                    </div>
+
+                    <div class="cert-card">
+                        <img src="assets/images/certs/cert-pp-functional.png" alt="Microsoft Certified: Power Platform Functional Consultant Associate" loading="lazy">
+                        <span>Power Platform Functional Consultant Associate</span>
+                    </div>
+
+                    <div class="cert-card">
+                        <img src="assets/images/certs/cert-pp-architect.png" alt="Microsoft Certified: Power Platform Solution Architect Expert" loading="lazy">
+                        <span>Power Platform Solution Architect Expert</span>
+                    </div>
+
+                    <div class="cert-card">
+                        <img src="assets/images/certs/cert-d365-erp.png" alt="Microsoft Certified: Dynamics 365 Fundamentals (ERP)" loading="lazy">
+                        <span>Dynamics 365 Fundamentals (ERP)</span>
+                    </div>
+
+                    <div class="cert-card">
+                        <img src="assets/images/certs/cert-d365-crm.png" alt="Microsoft Certified: Dynamics 365 Fundamentals (CRM)" loading="lazy">
+                        <span>Dynamics 365 Fundamentals (CRM)</span>
+                    </div>
+
                 </div>
-
-                <div class="cert-card">
-                    <img src="assets/images/certs/cert-powerbi-analyst.png" alt="Microsoft Certified: Power BI Data Analyst Associate" loading="lazy">
-                    <span>Power BI Data Analyst Associate</span>
-                </div>
-
-                <div class="cert-card">
-                    <img src="assets/images/certs/cert-pp-functional.png" alt="Microsoft Certified: Power Platform Functional Consultant Associate" loading="lazy">
-                    <span>Power Platform Functional Consultant Associate</span>
-                </div>
-
-                <div class="cert-card">
-                    <img src="assets/images/certs/cert-pp-architect.png" alt="Microsoft Certified: Power Platform Solution Architect Expert" loading="lazy">
-                    <span>Power Platform Solution Architect Expert</span>
-                </div>
-
-                <div class="cert-card">
-                    <img src="assets/images/certs/cert-d365-erp.png" alt="Microsoft Certified: Dynamics 365 Fundamentals (ERP)" loading="lazy">
-                    <span>Dynamics 365 Fundamentals (ERP)</span>
-                </div>
-
-                <div class="cert-card">
-                    <img src="assets/images/certs/cert-d365-crm.png" alt="Microsoft Certified: Dynamics 365 Fundamentals (CRM)" loading="lazy">
-                    <span>Dynamics 365 Fundamentals (CRM)</span>
-                </div>
-
             </div>
         </div>
-        </div>
     </section>
+
     <!-- Case Studies Section -->
     <section id="case-studies" class="case-studies">
         <div class="container">
@@ -407,7 +407,7 @@
         </div>
     </section>
 
-        <!-- Contact Section -->
+    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <div class="section-header">
@@ -628,7 +628,7 @@
     </div>
 
     <style>
-    /* ===== Impressum Modal ===== */
+    /* ===== Impressum & Datenschutz Modals ===== */
     .impressum-modal {
         display: none;
         position: fixed;
@@ -713,7 +713,6 @@
     .impressum-section a:hover {
         color: #3D516F;
     }
-    /* Responsive adjustments */
     @media (max-width: 600px) {
         .impressum-modal__content {
             padding: 32px 20px 24px;
@@ -764,17 +763,6 @@
     .btn-secondary:hover {
         background: #3D516F;
         color: #fff;
-    }
-    .form-note {
-        margin-top: 12px;
-        font-size: 0.85rem;
-        color: #666;
-        text-align: center;
-    }
-    .form-note a {
-        color: #3D516F;
-        font-weight: 600;
-        text-decoration: underline;
     }
     .contact-info a {
         color: #3D516F;

@@ -68,17 +68,13 @@ document.addEventListener("DOMContentLoaded", function() {
             messageDiv.textContent = "Fehler beim Senden der Nachricht. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.";
             messageDiv.className = "form-status-error";
         }
-        
-        // Optional: Scroll to the message if it's not in view
-        // messageDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    // Basic Client-Side Validation (Optional, as PHP handles server-side validation)
-    // You can keep this for better UX, but remove the e.preventDefault() and the alert simulation
+    // Basic Client-Side Validation
     const contactForm = document.getElementById("contactForm");
     if (contactForm) {
         contactForm.addEventListener("submit", function(e) {
-            // Basic validation (optional)
+            // Basic validation
             const emailInput = document.getElementById("email");
             if (emailInput && !isValidEmail(emailInput.value)) {
                 e.preventDefault(); // Prevent submission if email is invalid client-side
@@ -118,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 5000);
     }
     
-    // Add animation classes when elements come into view (Optional: Add Intersection Observer for better performance)
+    // Add animation classes when elements come into view
     const animateOnScroll = function() {
         const elements = document.querySelectorAll(".case-study, .about-content, .testimonial, .cta-content");
         
@@ -128,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function() {
             
             // Add a class when element is partially in view
             if (elementPosition < windowHeight - 100) {
-                element.classList.add("animate"); // Ensure you have .animate styles defined in CSS
+                element.classList.add("animate");
             }
         });
     };
