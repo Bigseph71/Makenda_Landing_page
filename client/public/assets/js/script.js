@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Contact Form - Display Success/Error Messages from PHP redirect
     const urlParams = new URLSearchParams(window.location.search);
     const formStatus = urlParams.get("status");
+    const formMsg    = urlParams.get("msg");
     const contactSection = document.getElementById("contact");
 
     if (contactSection && formStatus) {
@@ -54,19 +55,33 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!messageDiv) {
             messageDiv = document.createElement("div");
             messageDiv.id = "form-status-message";
-            // Insert the message div before the form container
             const formContainer = contactSection.querySelector(".contact-container");
             if (formContainer) {
                 contactSection.querySelector(".container").insertBefore(messageDiv, formContainer);
             }
         }
-        
+
         if (formStatus === "success") {
-            messageDiv.textContent = "Vielen Dank für Ihre Nachricht! Wir werden uns in Kürze bei Ihnen melden.";
+            messageDiv.innerHTML = '<strong>&#10003; Vielen Dank für Ihre Nachricht!</strong><br>Wir werden uns in Kürze bei Ihnen melden.';
             messageDiv.className = "form-status-success";
+            // Formular ausblenden nach Erfolg
+            const form = document.getElementById("contactForm");
+            if (form) form.style.display = "none";
         } else if (formStatus === "error") {
-            messageDiv.textContent = "Fehler beim Senden der Nachricht. Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt.";
+            const detail = formMsg ? decodeURIComponent(formMsg) : '';
+            messageDiv.innerHTML = '<strong>&#10007; Fehler beim Senden.</strong>' +
+                (detail ? '<br><small>' + detail + '</small>' : '<br>Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt unter <a href="mailto:kontakt@makenda.digital">kontakt@makenda.digital</a>.');
             messageDiv.className = "form-status-error";
+        }
+
+        // Sanft zur Kontakt-Sektion scrollen
+        setTimeout(function() {
+            contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 150);
+
+        // URL-Parameter bereinigen (verhindert erneutes Anzeigen beim Reload)
+        if (window.history && window.history.replaceState) {
+            window.history.replaceState({}, document.title, window.location.pathname + '#contact');
         }
     }
 

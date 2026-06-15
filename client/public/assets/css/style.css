@@ -625,23 +625,45 @@ footer {
 
 /* Form Status Messages */
 .form-status-success {
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    color: #3c763d;
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
+    padding: 18px 20px;
+    margin: 0 0 24px 0;
+    border: 1px solid #c3e6cb;
+    border-radius: 6px;
+    color: #155724;
+    background-color: #d4edda;
     text-align: center;
+    font-size: 1rem;
+    line-height: 1.6;
+    animation: fadeInDown 0.4s ease;
 }
 
 .form-status-error {
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    color: #a94442;
-    background-color: #f2dede;
-    border-color: #ebccd1;
+    padding: 18px 20px;
+    margin: 0 0 24px 0;
+    border: 1px solid #f5c6cb;
+    border-radius: 6px;
+    color: #721c24;
+    background-color: #f8d7da;
     text-align: center;
+    font-size: 1rem;
+    line-height: 1.6;
+    animation: fadeInDown 0.4s ease;
+}
+
+.form-status-error a {
+    color: #721c24;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.form-status-error small {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.875rem;
+    opacity: 0.85;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
