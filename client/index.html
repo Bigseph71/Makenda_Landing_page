@@ -528,15 +528,7 @@
                             <li><a href="#">AGB</a></li>
                         </ul>
                     </div>
-                    <div class="footer-column">
-                        <h4>Folgen Sie uns</h4>
-                        <div class="social-icons">
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-facebook"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div class="footer-bottom">
@@ -881,5 +873,37 @@
     </style>
 
     <script src="assets/js/script.js"></script>
+    <!-- Date field: set min inline to avoid cache/JS-delay issues on static hosts -->
+    <script>
+    (function() {
+        var d = document.getElementById('preferredDate');
+        if (!d) return;
+        // Calculate tomorrow
+        var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        // Skip to Monday if tomorrow is Saturday (6) or Sunday (0)
+        var dow = tomorrow.getDay();
+        if (dow === 0) tomorrow.setDate(tomorrow.getDate() + 1);
+        if (dow === 6) tomorrow.setDate(tomorrow.getDate() + 2);
+        var yyyy = tomorrow.getFullYear();
+        var mm   = String(tomorrow.getMonth() + 1).padStart(2, '0');
+        var dd   = String(tomorrow.getDate()).padStart(2, '0');
+        d.min = yyyy + '-' + mm + '-' + dd;
+        // Block weekends on change
+        d.addEventListener('change', function() {
+            if (!this.value) return;
+            var parts = this.value.split('-');
+            var chosen = new Date(+parts[0], +parts[1]-1, +parts[2]);
+            var w = chosen.getDay();
+            if (w === 0 || w === 6) {
+                this.setCustomValidity('Bitte wählen Sie einen Werktag (Montag–Freitag).');
+                this.reportValidity();
+                this.value = '';
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+    })();
+    </script>
 </body>
 </html>
