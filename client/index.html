@@ -69,6 +69,7 @@
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">Über uns</a></li>
+                    <li><a href="#services">Dienstleistungen</a></li>
                     <li><a href="#case-studies">Fallstudien</a></li>
                     <li><a href="#contact">Kontakt</a></li>
                 </ul>
@@ -153,6 +154,75 @@
                     </div>
 
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unsere Dienstleistungen Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Unsere Dienstleistungen</h2>
+                <p>Maßgeschneiderte Microsoft-Lösungen für Ihre digitale Transformation</p>
+            </div>
+            <div class="services-grid">
+
+                <!-- Power Apps -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="assets/images/services/logo-power-apps.png" alt="Microsoft Power Apps" />
+                    </div>
+                    <h3>Power Apps</h3>
+                    <p>Wir entwickeln maßgeschneiderte Business-Apps ohne aufwändige Programmierung. Von der Idee bis zur fertigen Lösung unterstützen wir Sie bei Layout, Datenbankanbindung und Deployment – schnell, skalierbar und kosteneffizient.</p>
+                    <ul class="service-features">
+                        <li>Canvas- &amp; Model-Driven Apps</li>
+                        <li>Datenbankintegration (Dataverse, SharePoint)</li>
+                        <li>Mobile-First-Design</li>
+                    </ul>
+                </div>
+
+                <!-- Power Automate -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="assets/images/services/logo-power-automate.png" alt="Microsoft Power Automate" />
+                    </div>
+                    <h3>Power Automate</h3>
+                    <p>Automatisieren Sie repetitive Geschäftsprozesse und sparen Sie wertvolle Arbeitszeit. Mit Power Automate verbinden wir Ihre bestehenden Systeme und schaffen durchgängige, fehlerfreie Workflows.</p>
+                    <ul class="service-features">
+                        <li>Cloud- &amp; Desktop-Flows</li>
+                        <li>Systemübergreifende Integrationen</li>
+                        <li>Genehmigungsprozesse &amp; Benachrichtigungen</li>
+                    </ul>
+                </div>
+
+                <!-- Power BI -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="assets/images/services/logo-power-bi.png" alt="Microsoft Power BI" />
+                    </div>
+                    <h3>Power BI</h3>
+                    <p>Verwandeln Sie Ihre Rohdaten in aussagekräftige Dashboards und Berichte. Wir helfen Ihnen, datenbasierte Entscheidungen zu treffen – in Echtzeit, visuell und für alle Stakeholder verständlich.</p>
+                    <ul class="service-features">
+                        <li>Interaktive Dashboards &amp; Reports</li>
+                        <li>Datenmodellierung &amp; ETL</li>
+                        <li>Interne &amp; externe Freigabe</li>
+                    </ul>
+                </div>
+
+                <!-- Dynamics 365 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="assets/images/services/logo-dynamics-365.png" alt="Microsoft Dynamics 365" />
+                    </div>
+                    <h3>Dynamics 365</h3>
+                    <p>Optimieren Sie Ihre Vertriebs-, Service- und ERP-Prozesse mit Microsoft Dynamics 365. Wir begleiten Sie von der Anforderungsanalyse über die Implementierung bis zum Go-Live – zertifiziert und praxiserprobt.</p>
+                    <ul class="service-features">
+                        <li>CRM: Sales, Customer Service</li>
+                        <li>ERP: Finance &amp; Supply Chain</li>
+                        <li>Konfiguration &amp; Schulung</li>
+                    </ul>
+                </div>
+
             </div>
         </div>
     </section>
@@ -868,6 +938,78 @@
     @media (max-width: 420px) {
         .certifications-grid {
             grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* ===== UNSERE DIENSTLEISTUNGEN ===== */
+    .services {
+        padding: 80px 0;
+        background: #f8f9fa;
+    }
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+        margin-top: 48px;
+    }
+    .service-card {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 36px 32px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        border-top: 4px solid #1a3a5c;
+    }
+    .service-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 32px rgba(0,0,0,0.12);
+    }
+    .service-icon {
+        width: 72px;
+        height: 72px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .service-icon img {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+    }
+    .service-card h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #1a3a5c;
+        margin-bottom: 12px;
+    }
+    .service-card > p {
+        color: #555;
+        line-height: 1.7;
+        margin-bottom: 16px;
+        font-size: 0.97rem;
+    }
+    .service-features {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .service-features li {
+        padding: 5px 0 5px 22px;
+        position: relative;
+        color: #444;
+        font-size: 0.92rem;
+    }
+    .service-features li::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: #e07b39;
+        font-weight: 700;
+    }
+    @media (max-width: 768px) {
+        .services-grid {
+            grid-template-columns: 1fr;
         }
     }
     </style>
