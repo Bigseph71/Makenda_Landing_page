@@ -1,18 +1,32 @@
 // Makenda Landing Page JavaScript
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Mobile Menu Toggle
+
+    // ─── Mobile Menu Toggle (hamburger ↔ X) ─────────────────────────────────
     const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
     const navMenu = document.querySelector("nav ul");
-    
+
     if (mobileMenuBtn && navMenu) {
         mobileMenuBtn.addEventListener("click", function() {
-            navMenu.classList.toggle("show");
-            mobileMenuBtn.classList.toggle("active");
+            const isOpen = navMenu.classList.toggle("show");
+            mobileMenuBtn.classList.toggle("active", isOpen);
+            // Update aria-expanded for accessibility
+            mobileMenuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            mobileMenuBtn.setAttribute("aria-label", isOpen ? "Menü schließen" : "Menü öffnen");
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("click", function(e) {
+            if (!mobileMenuBtn.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove("show");
+                mobileMenuBtn.classList.remove("active");
+                mobileMenuBtn.setAttribute("aria-expanded", "false");
+                mobileMenuBtn.setAttribute("aria-label", "Menü öffnen");
+            }
         });
     }
-    
-    // Smooth scrolling for anchor links
+
+    // ─── Smooth scrolling for anchor links ───────────────────────────────────
     const anchorLinks = document.querySelectorAll("a[href^='#']");
     anchorLinks.forEach(link => {
         link.addEventListener("click", function(e) {
@@ -21,9 +35,12 @@ document.addEventListener("DOMContentLoaded", function() {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 e.preventDefault();
+                // Close mobile menu if open
                 if (mobileMenuBtn && navMenu && navMenu.classList.contains("show")) {
                     navMenu.classList.remove("show");
                     mobileMenuBtn.classList.remove("active");
+                    mobileMenuBtn.setAttribute("aria-expanded", "false");
+                    mobileMenuBtn.setAttribute("aria-label", "Menü öffnen");
                 }
                 const header = document.querySelector("header");
                 const headerHeight = header ? header.offsetHeight : 0;
@@ -34,10 +51,61 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
+    // ─── Contact/Booking Tabs ─────────────────────────────────────────────────
+    const tabBtns = document.querySelectorAll(".tab-btn");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabBtns.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+            const targetTab = this.getAttribute("data-tab");
+
+            // Deactivate all tabs
+            tabBtns.forEach(function(b) {
+                b.classList.remove("active");
+                b.setAttribute("aria-selected", "false");
+            });
+            tabContents.forEach(function(c) {
+                c.classList.remove("active");
+            });
+
+            // Activate selected tab
+            this.classList.add("active");
+            this.setAttribute("aria-selected", "true");
+            const targetContent = document.getElementById(targetTab);
+            if (targetContent) {
+                targetContent.classList.add("active");
+            }
+        });
+    });
+
+    // ─── FAQ Accordion ────────────────────────────────────────────────────────
+    const faqQuestions = document.querySelectorAll(".faq-question");
+
+    faqQuestions.forEach(function(question) {
+        question.addEventListener("click", function() {
+            const answer = this.nextElementSibling;
+            const isExpanded = this.getAttribute("aria-expanded") === "true";
+
+            // Close all other open answers
+            faqQuestions.forEach(function(q) {
+                if (q !== question) {
+                    q.setAttribute("aria-expanded", "false");
+                    const a = q.nextElementSibling;
+                    if (a) a.classList.remove("open");
+                }
+            });
+
+            // Toggle current
+            this.setAttribute("aria-expanded", isExpanded ? "false" : "true");
+            if (answer) {
+                answer.classList.toggle("open", !isExpanded);
+            }
+        });
+    });
+
     // ─── Date field: set min = tomorrow, disable weekends ────────────────────
     const dateInput = document.getElementById("preferredDate");
     if (dateInput) {
-        // Calculate tomorrow's date
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
         const yyyy = tomorrow.getFullYear();
@@ -45,7 +113,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const dd   = String(tomorrow.getDate()).padStart(2, '0');
         dateInput.min = yyyy + '-' + mm + '-' + dd;
 
-        // Block weekends on change
         dateInput.addEventListener("change", function() {
             if (!this.value) return;
             const chosen = new Date(this.value + 'T00:00:00');
@@ -72,9 +139,9 @@ document.addEventListener("DOMContentLoaded", function() {
             messageDiv = document.createElement("div");
             messageDiv.id = "form-status-message";
             const container = contactSection.querySelector(".container");
-            const formContainer = contactSection.querySelector(".contact-container");
-            if (container && formContainer) {
-                container.insertBefore(messageDiv, formContainer);
+            const tabsEl = contactSection.querySelector(".contact-tabs");
+            if (container && tabsEl) {
+                container.insertBefore(messageDiv, tabsEl);
             } else if (container) {
                 container.prepend(messageDiv);
             }
@@ -91,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 "background:#d4edda; color:#155724; " +
                 "font-size:1rem; line-height:1.7; text-align:center; " +
                 "box-shadow:0 2px 8px rgba(40,167,69,0.15);");
-            // Formulaire ausblenden
+            // Hide the form after success
             const form = document.getElementById("contactForm");
             if (form) form.style.display = "none";
         } else if (formStatus === "error") {
@@ -114,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function() {
             contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 200);
 
-        // Clean URL (keep #contact, remove query params)
+        // Clean URL
         if (window.history && window.history.replaceState) {
             window.history.replaceState({}, document.title, window.location.pathname + '#contact');
         }
@@ -155,7 +222,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // ─── Animate on scroll ───────────────────────────────────────────────────
     const animateOnScroll = function() {
-        document.querySelectorAll(".case-study, .about-content, .testimonial, .cta-content").forEach(el => {
+        document.querySelectorAll(".case-study, .about-content, .testimonial, .faq-item").forEach(el => {
             if (el.getBoundingClientRect().top < window.innerHeight - 100) {
                 el.classList.add("animate");
             }
@@ -173,4 +240,20 @@ document.addEventListener("DOMContentLoaded", function() {
             if (datenschutz) datenschutz.classList.remove('active');
         }
     });
+
+    // ─── Check URL for tab parameter (e.g., #contact?tab=booking) ────────────
+    // Allow direct linking to booking tab via URL hash
+    if (window.location.hash === '#booking') {
+        const bookingTabBtn = document.querySelector('[data-tab="booking-tab"]');
+        if (bookingTabBtn) bookingTabBtn.click();
+        const contactEl = document.getElementById('contact');
+        if (contactEl) {
+            setTimeout(function() {
+                const header = document.querySelector("header");
+                const headerHeight = header ? header.offsetHeight : 0;
+                const pos = contactEl.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
+                window.scrollTo({ top: pos, behavior: "smooth" });
+            }, 100);
+        }
+    }
 });
